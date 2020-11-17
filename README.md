@@ -4,27 +4,31 @@ ___
 
 
 # アプリケーションの機能一覧
-＿＿＿
-* ログイン関連
+___
+* 新規登録機能
+* ログイン機能(devise)
+* ログアウト機能
+* 投稿機能(mini_magick)
+* 投稿削除機能
+* 投稿編集機能
+* お気に入り機能
+* 商品購入機能
+* 商品へのコメント機能
 
- * ログイン機能
- * ログアウト機能
+# 使用技術
+___
+* HTML/CSS
+* JavaScript
+* ruby 2.6.5
+* Rails 6.0.3.4
 
-* ユーザー関連
+# テストフレームワーク
+___
+* Rspec
 
- * ユーザ登録機能
-
-* 投稿関連
-
- * 投稿機能
- * 投稿削除機能
- * 投稿編集機能
- * お気に入り機能
- * 商品不適切報告機能
-
-* 商品購入関連
- * 商品購入機能
-
+# 本番環境
+___
+* heroku
 
  
 
@@ -36,28 +40,38 @@ ___
 
 ## users テーブル
 
-| Column     | Type   | Options         |
-|  --------  | ------ | -----------     |
-| nickname   | string | null: false     |
-| email      | string | null: false     |
-| password   | string | null: false     |
-| lastname   | string   | null: false     |
-| firstname  | string   | null: false     |
-| birth   | text   | null: false     |
+| Column         | Type   | Options         |
+|  --------      | ------ | -----------     |
+| nickname       | string | null: false     |
+| email          | string | null: false     |
+| password       | string | null: false     |
+| firstname      | string | null: false     |
+| lastname       | string | null: false     |
+| firstname_kana | string | null: false     |  
+| lastname_kana  | string | null: false     | 
+| birth_year     | string | null: false     |
+| birth_month    | string | null: false     |
+| birth_day      | string | null: false     |
+
 
 ### Association
 
-- has_many :prototypes
+- has_many :items
 - has_many :comments
 
-## prototypes テーブル
+## items テーブル
 
-| Column     | Type       | Options            |
-| ------     | ------     | -----------        |
-| title      | string     | null: false        |
-| catch_copy | text       | null: false        |
-| concept    | text       | null: false        |
-| user       | references | foreign_key: true  |
+| Column        | Type       | Options            |
+| ------        | ------     | -----------        |
+| item_name     | string     | null: false        |
+| explanation   | text       | null: false        |
+| category      | string     | null: false        |
+| condition     | string     | null: false        |
+| delivery      | string     | null: false        |
+| delivery_area | string     | null: false        |
+| delivery_days | string     | null: false        |
+| price         | string     | null: false        |
+| user          | references | foreign_key: true  |
 
 
 ### Association
