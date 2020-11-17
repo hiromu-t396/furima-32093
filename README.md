@@ -40,24 +40,26 @@ ___
 
 ## users テーブル
 
-| Column         | Type   | Options         |
-|  --------      | ------ | -----------     |
-| nickname       | string | null: false     |
-| email          | string | null: false     |
-| password       | string | null: false     |
-| firstname      | string | null: false     |
-| lastname       | string | null: false     |
-| firstname_kana | string | null: false     |  
-| lastname_kana  | string | null: false     | 
-| birth_year     | string | null: false     |
-| birth_month    | string | null: false     |
-| birth_day      | string | null: false     |
+| Column         | Type    | Options         |
+|  --------      | ------  | -----------     |
+| nickname       | string  | null: false     |
+| email          | string  | null: false     |
+| password       | string  | null: false     |
+| firstname      | string  | null: false     |
+| lastname       | string  | null: false     |
+| firstname_kana | string  | null: false     |  
+| lastname_kana  | string  | null: false     | 
+| birth_year     | integer | null: false     |
+| birth_month    | integer | null: false     |
+| birth_day      | integer | null: false     |
 
 
 ### Association
 
 - has_many :items
 - has_many :comments
+- has_many :purchases
+
 
 ## items テーブル
 
@@ -70,19 +72,24 @@ ___
 | delivery      | string     | null: false        |
 | delivery_area | string     | null: false        |
 | delivery_days | string     | null: false        |
-| price         | string     | null: false        |
-| user          | references | foreign_key: true  |
+| price         | integer    | null: false        |
+| user_id       | references | foreign_key: true  |
 
 
 ### Association
 
-- has_many :comments
+# purchases テーブル
 
-## comments テーブル
-
-| Column    | Type       | Options                        |
-| ------    | ---------- | ------------------------------ |
-| text      | text       | null: false, foreign_key: true |
-| user      | references | foreign_key: true              |
-| prototype | references | foreign_key: true              |
-
+| Column           | Type        | Options            |
+| ------           | ------      | -----------        |
+| card_infomation  | integer     | null: false        |
+| expiration_month | integer     | null: false        |
+| expiration_year  | integer     | null: false        |
+| security_code    | integer     | null: false        |
+| postal_code      | integer     | null: false        |
+| prefectures      | string      | null: false        |
+| municipality     | string      | null: false        |
+| address          | string      | null: false        |
+| building_name    | string      | null: false        |
+| phone_number     | integer     | null: false        |
+| user_id          | references  | foreign_key: true  |
