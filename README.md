@@ -78,7 +78,8 @@ ___
 ### Association
 
 - belongs_to :user
-- has-one :transaction
+- has_one :transaction
+- has_one :purchases
 
 
 # purchases テーブル
@@ -96,7 +97,7 @@ ___
 
 ### Association
 
-- belongs_to :user
+- has_one :item
 
 # transaction
 
@@ -109,4 +110,4 @@ ___
 ### Association
 
 - belongs_to :user
-- has-one :item
+- has_one :item
