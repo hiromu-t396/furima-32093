@@ -67,7 +67,7 @@ ___
 | category_id      | integer    | null: false        |
 | condition_id     | integer    | null: false        |
 | delivery_id      | integer    | null: false        |
-| delivery_area_id | integer    | null: false        |
+| prefecture_id    | integer    | null: false        |
 | delivery_days_id | integer    | null: false        |
 | price            | integer    | null: false        |
 | user             | references | foreign_key: true  |
