@@ -55,8 +55,6 @@ ___
 ### Association
 
 - has_many :items
-- has_many :comments
-- has_many :purchases
 - has_many :transactions
 
 
@@ -79,7 +77,6 @@ ___
 
 - belongs_to :user
 - has_one :transaction
-- has_one :purchases
 
 
 # purchases テーブル
@@ -87,27 +84,30 @@ ___
 | Column           | Type        | Options            |
 | ------           | ------      | -----------        |
 | postal_code      | string      | null: false        |
-| prefectures_id   | integer     | null: false        |
+| prefecture_id    | integer     | null: false        |
 | municipality     | string      | null: false        |
 | address          | string      | null: false        |
 | building_name    | string      |                    |
 | phone_number     | string      | null: false        |
-| user             | references  | foreign_key: true  |
+| transaction      | references  | foreign_key: true  |
 
 
 ### Association
 
-- has_one :item
+- has_one :transaction
 
 # transaction
 
-| Column   | Type        | Options            |
-| ------   | ------      | -----------        |
-| user     | references  | null: false        |
-| item     | references  | null: false        |
+| Column      | Type        | Options            |
+| ------      | ------      | -----------        |
+| user        | references  | null: false        |
+| item        | references  | null: false        |
+| purchase    | references  | foreign_key: true  |
+
 
 
 ### Association
 
 - belongs_to :user
 - has_one :item
+- has_one :purchase
