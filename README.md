@@ -94,20 +94,19 @@ ___
 
 ### Association
 
-- has_one :transaction
+- belongs_to :transaction
 
 # transaction
 
 | Column      | Type        | Options            |
 | ------      | ------      | -----------        |
-| user        | references  | null: false        |
-| item        | references  | null: false        |
-| purchase    | references  | foreign_key: true  |
+| user        | references  | foreign_key: true  |
+| item        | references  | foreign_key: true  |
 
 
 
 ### Association
 
 - belongs_to :user
-- has_one :item
-- has_one :purchase
+- belongs_to :item
+- has_one    :purchase
