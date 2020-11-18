@@ -57,6 +57,7 @@ ___
 - has_many :items
 - has_many :comments
 - has_many :purchases
+- has_many :transactions
 
 
 ## items テーブル
@@ -65,11 +66,11 @@ ___
 | ------           | ------     | -----------        |
 | item_name        | string     | null: false        |
 | explanation      | text       | null: false        |
-| category_id      | string     | null: false        |
-| condition_id     | string     | null: false        |
-| delivery_id      | string     | null: false        |
-| delivery_area_id | string     | null: false        |
-| delivery_days_id | string     | null: false        |
+| category_id      | integer    | null: false        |
+| condition_id     | integer    | null: false        |
+| delivery_id      | integer    | null: false        |
+| delivery_area_id | integer    | null: false        |
+| delivery_days_id | integer    | null: false        |
 | price            | integer    | null: false        |
 | user             | references | foreign_key: true  |
 
@@ -77,6 +78,7 @@ ___
 ### Association
 
 - belongs_to :user
+- has-one :transaction
 
 
 # purchases テーブル
@@ -87,7 +89,7 @@ ___
 | prefectures      | string      | null: false        |
 | municipality     | string      | null: false        |
 | address          | string      | null: false        |
-| building_name    | string      | null: false        |
+| building_name    | string      |                    |
 | phone_number     | integer     | null: false        |
 | user             | references  | foreign_key: true  |
 
@@ -95,3 +97,16 @@ ___
 ### Association
 
 - belongs_to :user
+
+# transaction
+
+| Column   | Type        | Options            |
+| ------   | ------      | -----------        |
+| user     | references  | null: false        |
+| item     | references  | null: false        |
+
+
+### Association
+
+- belongs_to :user
+- has-one :item
