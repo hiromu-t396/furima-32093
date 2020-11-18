@@ -43,7 +43,7 @@ ___
 | Column             | Type    | Options         |
 |  --------          | ------  | -----------     |
 | nickname           | string  | null: false     |
-| email              | string  | null: false     |
+| email              | string  | unique: true    |
 | encrypted_password | string  | null: false     |
 | firstname          | string  | null: false     |
 | lastname           | string  | null: false     |
