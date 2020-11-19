@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  validates :email, presence: true, unique: true, format: { with: /\A[@]\z/ }
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[@]\z/ }
   validates :encrypted_password, length: {minimum: 6 }, presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}
   validates :lastname, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]\z/}
   validates :firstname, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]\z/}
