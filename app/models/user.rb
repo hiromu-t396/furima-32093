@@ -8,12 +8,13 @@ class User < ApplicationRecord
   validates :firstname, format: { with: /\A[ぁ-んァ-ン一-龥]\z/ }
   validates :lastname_kana, format: { with: /\A[ァ-ン]\z/ }
   validates :firstname_kana, format: { with: /\A[ァ-ン]\z/ }
-  validates :birth_day, presence: true
+
   has_many :items
   has_many :transactions
 
-  with_options presence true do
+  with_options presence: true do
     validates :nickname
+    validates :email
     validates :password
     validates :lastname
     validates :firstname
@@ -21,5 +22,4 @@ class User < ApplicationRecord
     validates :firstname_kana
     validates :birth_day
   end
-  
 end
