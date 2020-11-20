@@ -4,11 +4,10 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
-  validates :lastname, format: { with: /\A[ぁ-んァ-ン一-龥]\z/ }
-  validates :firstname, format: { with: /\A[ぁ-んァ-ン一-龥]\z/ }
-  validates :lastname_kana, format: { with: /\A[ァ-ン]\z/ }
-  validates :firstname_kana, format: { with: /\A[ァ-ン]\z/ }
-
+  validates :lastname, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ }
+  validates :firstname, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ }
+  validates :lastname_kana, format: { with: /\A[ァ-ン]+\z/ }
+  validates :firstname_kana, format: { with: /\A[ァ-ン]+\z/ }
   has_many :items
   has_many :transactions
 
