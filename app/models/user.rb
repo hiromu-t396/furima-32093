@@ -4,12 +4,18 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
-  validates :lastname, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ }
-  validates :firstname, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ }
-  validates :lastname_kana, format: { with: /\A[ァ-ン]+\z/ }
-  validates :firstname_kana, format: { with: /\A[ァ-ン]+\z/ }
   has_many :items
   has_many :transactions
+
+  with_options format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ } do
+    validates :lastname
+    validates :firstname
+  end
+  
+  with_options format: { with: /\A[ァ-ン]+\z/ } do
+    validates :lastname_kana
+    validates :firstname_kana
+  end
 
   with_options presence: true do
     validates :nickname
@@ -22,3 +28,5 @@ class User < ApplicationRecord
     validates :birth_day
   end
 end
+
+  
