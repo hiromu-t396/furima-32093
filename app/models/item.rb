@@ -19,7 +19,8 @@ class Item < ApplicationRecord
   belongs_to :category
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :condition
-  
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :delivery
   has_one_attached :image
   belongs_to :user
   has_one :transaction
