@@ -1,6 +1,4 @@
 class Item < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
 
   validates :name, presence: true
   validates :explanation, presence: true
@@ -17,6 +15,11 @@ class Item < ApplicationRecord
   validates :prefecture_id, numericality: { other_than: 1 }
   validates :delivery_days_id, numericality: { other_than: 1 }
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :condition
+  
   has_one_attached :image
   belongs_to :user
   has_one :transaction
