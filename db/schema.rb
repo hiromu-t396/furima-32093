@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_21_081415) do
+ActiveRecord::Schema.define(version: 2020_11_21_022457) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,7 +33,8 @@ ActiveRecord::Schema.define(version: 2020_11_21_081415) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "delivery_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "__skip_migrate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -45,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_11_21_081415) do
     t.integer "condition_id", null: false
     t.integer "delivery_id", null: false
     t.integer "prefecture_id", null: false
-    t.integer "delivery_days_id", null: false
+    t.integer "delivery_day_id", null: false
     t.integer "price", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
