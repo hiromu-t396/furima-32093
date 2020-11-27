@@ -96,7 +96,7 @@ ___
 
 - belongs_to :transaction
 
-# transaction
+# transactions
 
 | Column      | Type        | Options            |
 | ------      | ------      | -----------        |
