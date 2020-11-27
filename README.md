@@ -79,7 +79,7 @@ ___
 - has_one :transaction
 
 
-# purchases テーブル
+# address テーブル
 
 | Column           | Type        | Options            |
 | ------           | ------      | -----------        |
@@ -109,4 +109,4 @@ ___
 
 - belongs_to :user
 - belongs_to :item
-- has_one    :purchase
+- has_one    :address
