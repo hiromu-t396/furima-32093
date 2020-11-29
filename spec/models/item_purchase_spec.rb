@@ -14,30 +14,40 @@ RSpec.describe ItemPurchase, type: :model do
 
     context '購入がうまくいかないとき' do
       it '郵便番号が空のとき' do
-        
+        @item_purchase.postal_code = nil
+        @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("Postal code can't be blank")
       end
       it '郵便番号にハイフンが含まれていないとき' do
-
+        @item_purchase.postal_code = "1111111"
+        @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("Postal code Input correctly")
       end
       it '都道府県が選択されていないとき' do
-
+        @item_purchase.prefecture_id = 1
+        @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("Prefecture Select")
       end
       it '市区町村が空の時' do
-
+        @item_purchase.municipality = nil
+        @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("Municipality can't be blank")
       end
       it '番地が空のとき' do
-
+        @item_purchase.address = nil
+        @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("Address can't be blank")
       end
       it '電話番号が空のとき' do
-
+        @item_purchase.phone_number = nil
+        @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("Phone number can't be blank")
       end
       it '電話番号が半角数字以外のとき' do
-
+        @item_purchase.phone_number = "１１１１１１１１１１１"
+        @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("Phone number Input only number")
       end
-      it '電話番号が12桁以上のとき' do
-        
-      end
-
     end
   end
 end
