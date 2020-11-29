@@ -55,7 +55,7 @@ ___
 ### Association
 
 - has_many :items
-- has_many :transactions
+- has_many :purchases
 
 
 ## items テーブル
@@ -76,7 +76,7 @@ ___
 ### Association
 
 - belongs_to :user
-- has_one :transaction
+- has_one :purchase
 
 
 # address テーブル
@@ -89,14 +89,14 @@ ___
 | address          | string      | null: false        |
 | building_name    | string      |                    |
 | phone_number     | string      | null: false        |
-| transaction      | references  | foreign_key: true  |
+| purchase         | references  | foreign_key: true  |
 
 
 ### Association
 
-- belongs_to :transaction
+- belongs_to :purchase
 
-# transactions
+# purchases
 
 | Column      | Type        | Options            |
 | ------      | ------      | -----------        |
