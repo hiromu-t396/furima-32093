@@ -66,7 +66,7 @@ RSpec.describe ItemPurchase, type: :model do
         @item_purchase.valid?
       end
       it 'item_idが空では購入できない' do
-        @item_purchase.user_id = nil
+        @item_purchase.item_id = nil
         @item_purchase.valid?
       end
     end
