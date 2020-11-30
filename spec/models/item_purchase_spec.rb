@@ -56,10 +56,18 @@ RSpec.describe ItemPurchase, type: :model do
         @item_purchase.phone_number = '111111111111'
         @item_purchase.valid?
       end
-      it 'カード情報が空では保存できない' do
+      it 'カード情報が空では購入できない' do
         @item_purchase.token = nil
         @item_purchase.valid?
         expect(@item_purchase.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_idが空では購入できない' do
+        @item_purchase.user_id = nil
+        @item_purchase.valid?
+      end
+      it 'item_idが空では購入できない' do
+        @item_purchase.user_id = nil
+        @item_purchase.valid?
       end
     end
   end
