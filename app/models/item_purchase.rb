@@ -9,6 +9,8 @@ class ItemPurchase < ApplicationRecord
     validates :municipality
     validates :address
     validates :phone_number, format: { with: /\A\d[0-9]{,11}\z/, message: 'Input only number' }
+    validates :user_id
+    validates :item_id
   end
 
   def save
