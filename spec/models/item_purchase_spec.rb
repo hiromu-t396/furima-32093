@@ -10,6 +10,10 @@ RSpec.describe ItemPurchase, type: :model do
       it '全ての値が適切に記入されている' do
         expect(@item_purchase).to be_valid
       end
+      it '建物名が空でも登録できる' do
+        @item_purchase.building_name = nil
+        expect(@item_purchase).to be_valid
+      end
     end
 
     context '購入がうまくいかないとき' do
