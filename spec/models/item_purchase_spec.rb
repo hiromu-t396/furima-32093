@@ -68,10 +68,12 @@ RSpec.describe ItemPurchase, type: :model do
       it 'user_idが空では購入できない' do
         @item_purchase.user_id = nil
         @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("User can't be blank")
       end
       it 'item_idが空では購入できない' do
         @item_purchase.item_id = nil
         @item_purchase.valid?
+        expect(@item_purchase.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
