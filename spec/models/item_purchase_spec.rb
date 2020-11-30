@@ -50,7 +50,7 @@ RSpec.describe ItemPurchase, type: :model do
       it '電話番号が半角数字以外のとき' do
         @item_purchase.phone_number = '１１１１１１１１１１１'
         @item_purchase.valid?
-        expect(@item_purchase.errors.full_messages).to include("Phone number Input only number")
+        expect(@item_purchase.errors.full_messages).to include('Phone number Input only number')
       end
       it '電話番号が12桁以上だと購入できない' do
         @item_purchase.phone_number = '111111111111'

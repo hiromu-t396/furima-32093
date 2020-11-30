@@ -2,17 +2,14 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
   def index
-    unless item.purchase.present? then
-      if current_user.id != @item.user_id  
-        @item_purchase = ItemPurchase.new
-      else
-        render template: "items/index"
-      end
+    if item.purchase.present?
+      render template: 'items/index'
+    elsif current_user.id != @item.user_id
+      @item_purchase = ItemPurchase.new
     else
-      render template: "items/index"
+      render template: 'items/index'
     end
   end
-
 
   def create
     @item_purchase = ItemPurchase.new(purchase_params)
