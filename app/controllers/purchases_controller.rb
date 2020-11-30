@@ -12,6 +12,12 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
     @item_purchase = ItemPurchase.new(purchase_params)
     if @item_purchase.valid?
+      Payjp.api_key = "sk_test_1eaca7d4d3b836bfdf35e3f1"
+      Payjp::Charge.create(
+        amount: @item.price,         # 商品の値段
+        card: purchase_params[:token],    # カードトークン
+        currency: 'jpy'                 # 通貨の種類（日本円）
+      )
       @item_purchase.save
       redirect_to items_path
     else  
