@@ -3,11 +3,11 @@ class PurchasesController < ApplicationController
   before_action :set_item, only: [:index, :create]
   def index
     if item.purchase.present?
-      render template: 'items/index'
+      redirect_to items_path
     elsif current_user.id != @item.user_id
       @item_purchase = ItemPurchase.new
     else
-      render template: 'items/index'
+      redirect_to items_path
     end
   end
 
