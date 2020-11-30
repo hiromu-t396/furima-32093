@@ -32,6 +32,10 @@ RSpec.describe ItemPurchase, type: :model do
         @item_purchase.valid?
         expect(@item_purchase.errors.full_messages).to include('Prefecture Select')
       end
+      it '都道府県が空では購入できない' do
+        @item_purchase.prefecture_id = nil
+        @item_purchase.valid?
+      end
       it '市区町村が空の時' do
         @item_purchase.municipality = nil
         @item_purchase.valid?
